@@ -1,9 +1,11 @@
 import * as React from 'react';
 
-import { CreateTodo } from '../types';
+import { TodosContext } from '../store/todos';
 import styles from './NewTodo.module.css';
 
-const NewTodo: React.FC<{ onAddTodo: CreateTodo }> = ({ onAddTodo }) => {
+const NewTodo: React.FC = () => {
+  const todosCtx = React.useContext(TodosContext);
+
   const todoTextInputRef = React.useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -15,7 +17,7 @@ const NewTodo: React.FC<{ onAddTodo: CreateTodo }> = ({ onAddTodo }) => {
     if (todoTextInput.trim().length === 0) return;
 
     // add todo
-    onAddTodo(todoTextInput);
+    todosCtx.addTodo(todoTextInput);
   };
 
   return (
