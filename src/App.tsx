@@ -1,22 +1,30 @@
-import Todos from './components/Todos';
+import * as React from 'react';
 
+import NewTodo from './components/NewTodo';
+import Todos from './components/Todos';
 import { Todo } from './types';
 
 function App() {
-  // test data only
-  const todoList: Todo[] = [
-    {
-      id: 'todo-1',
-      text: 'buy groceries'
-    },
-    {
-      id: 'todo-2',
-      text: 'clean my room'
-    }
-  ];
+  const [todos, setTodos] = React.useState<Todo[]>([]);
+
+  // list of todos
+  const todoList = todos;
+
+  // add todo
+  const handleAddTodo = (todoText: string) => {
+    const newTodo: Todo = {
+      id: new Date().toISOString(),
+      text: todoText
+    };
+
+    setTodos((prevTodos) => {
+      return prevTodos.concat(newTodo);
+    });
+  };
 
   return (
     <div>
+      <NewTodo onAddTodo={handleAddTodo} />
       <Todos todos={todoList} />
     </div>
   );
