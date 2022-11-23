@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface Todo {
   id: React.Key;
   text: string;
