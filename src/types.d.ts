@@ -10,7 +10,7 @@ type CreateTodo = {
 };
 
 type RemoveTodo = {
-  (id: string): void;
+  (id: React.Key): void;
 };
 
 export { Todo, CreateTodo, RemoveTodo };

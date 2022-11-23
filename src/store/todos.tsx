@@ -11,7 +11,7 @@ type TodosContextObj = {
 export const TodosContext = React.createContext<TodosContextObj>({
   todos: [],
   addTodo: (text: string) => {},
-  removeTodo: (id: string) => {}
+  removeTodo: (id: React.Key) => {}
 });
 
 const TodosContextProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -32,7 +32,11 @@ const TodosContextProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   // remove todo
-  const handleRemoveTodo = (id: string) => {};
+  const handleRemoveTodo = (todoId: React.Key) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => todo.id !== todoId);
+    });
+  };
 
   const contextValue: TodosContextObj = {
     todos,

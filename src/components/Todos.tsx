@@ -10,7 +10,11 @@ const Todos: React.FC = () => {
   return (
     <ul className={styles.todos}>
       {todosCtx.todos.map((todo) => (
-        <TodoItem key={todo.id} text={todo.text} />
+        <TodoItem
+          key={todo.id}
+          text={todo.text}
+          onRemoveTodo={todosCtx.removeTodo.bind(null, todo.id)}
+        />
       ))}
     </ul>
   );
