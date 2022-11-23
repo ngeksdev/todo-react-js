@@ -1,1 +1,1 @@
-# Simple Todo App
+# Todo App - ReactJS using TypeScript
